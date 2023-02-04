@@ -7,8 +7,7 @@ public class Main {
 		BigInteger a = sc.nextBigInteger();
 		BigInteger m = sc.nextBigInteger();
 		sc.close();
-		BigInteger t = new BigInteger("2");
-		BigInteger n = (a.subtract(m)).divide(t);
+		BigInteger n = (a.subtract(m)).divide(BigInteger.valueOf(2));
 		BigInteger k = n.add(m);
 		
 		System.out.println(k);
