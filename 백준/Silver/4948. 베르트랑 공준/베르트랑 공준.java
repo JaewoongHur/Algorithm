@@ -6,7 +6,6 @@ import java.io.OutputStreamWriter;
 
 public class Main {
 	public static boolean[] P = new boolean[246913];
-
 	public static void getPrime() {
 		P[0] = P[1] = true;
 		for (int i = 2; i <= Math.sqrt(P.length); i++) {
@@ -17,9 +16,7 @@ public class Main {
 			}
 		}
 	}
-
 	public static void main(String[] args) throws IOException {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		getPrime();
