@@ -15,13 +15,10 @@ public class Solution {
 			int len = s.length();
 			int len2 = line.length();
 			int cnt = 0;
-			for (int j = 0; j <= len2 - len ; j++) {
+			for (int j = 0; j <= len2 - len; j++) {
 				if (s.equals(line.substring(j, j + len))) {
 					cnt++;
 				}
-			}
-			if(s.equals(line.substring(len2-len+1))) {
-				cnt++;
 			}
 			bw.write("#" + N + " " + cnt);
 			bw.newLine();
