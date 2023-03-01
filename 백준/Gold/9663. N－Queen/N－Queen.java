@@ -5,58 +5,40 @@ import java.io.InputStreamReader;
 public class Main {
 
 	static int N;
-	static int[] dr = { -1, -1, 0, 1, 1, 1, 0, -1 };
-	static int[] dc = { 0, 1, 1, 1, 0, -1, -1, -1 };
-	static boolean[][] queen;
+	static boolean[] diag_down;
+	static boolean[] diag_up;
+	static boolean[] col;
 	static int cnt;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		N = Integer.parseInt(br.readLine());
-		queen = new boolean[N][N];
+		col = new boolean[N];
+		diag_up = new boolean[2 * N - 1];
+		diag_down = new boolean[2 * N - 1];
 		cnt = 0;
 		queenSearch(0);
 		System.out.println(cnt);
 	}
 
-	public static boolean boundaryCheck(int r, int c) {
-		return r >= 0 && r < N && c >= 0 && c < N;
-	}
-
-	public static void queenSearch(int c) {
-		if (c == N) {
+	public static void queenSearch(int r) {
+		if (r == N) {
 			cnt++;
 			return;
 		}
-		
-		for(int i=0;i<N;i++) {
-			if(queenCheck(i,c)) {
-				queen[i][c] = true;
-				queenSearch(c+1);
-				queen[i][c] = false;
+
+		for (int c = 0; c < N; c++) {
+			if (col[c] || diag_up[r + c] || diag_down[N - 1 + c - r]) {
+				continue;
 			}
+			col[c] = true;
+			diag_up[r + c] = true;
+			diag_down[N - 1 + c - r] = true;
+			queenSearch(r + 1);
+			col[c] = false;
+			diag_up[r + c] = false;
+			diag_down[N - 1 + c - r] = false;
 		}
 	}
-
-	public static boolean queenCheck(int r, int c) {
-		for (int i = 0; i < N; i++) {
-			if (queen[r][i] || queen[i][c]) {
-				return false;
-			}
-		}
-		for (int i = 0; i < 8; i++) {
-			int nr = r + dr[i];
-			int nc = c + dc[i];
-			while (boundaryCheck(nr, nc)) {
-				if (queen[nr][nc]) {
-					return false;
-				}
-				nr += dr[i];
-				nc += dc[i];
-			}
-		}
-		return true;
-	}
-
 }
