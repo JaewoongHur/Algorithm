@@ -41,7 +41,7 @@ public class Main {
 			return;
 		} else {
 			for (int val = 1; val <= 9; val++) {
-				if (!rowCheck(r, c, val) || !colCheck(r, c, val) || !squarePut(r, c, val)) {
+				if (!rowCheck(r, c, val) || !colCheck(r, c, val) || !squareCheck(r, c, val)) {
 					continue;
 				}
 				arr[r][c] = val;
@@ -74,7 +74,7 @@ public class Main {
 		return true;
 	}
 
-	static boolean squarePut(int r, int c, int val) {
+	static boolean squareCheck(int r, int c, int val) {
 		int a = r % 3;
 		int b = c % 3;
 		for (int i = r - a; i < r - a + 3; i++) {
