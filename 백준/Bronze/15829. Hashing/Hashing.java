@@ -12,7 +12,7 @@ public class Main {
 		for (int i = 0; i < L; i++) {
 			long a = s.charAt(i) - 96;
 			sum += (a * r) % 1234567891;
-			r = (r * 31) % 1234567891;
+			r = ((r) % 1234567891)*31 %1234567891;
 		}
 		System.out.println(sum);
 	}
