@@ -26,7 +26,7 @@ public class Main {
 		int min = Integer.MAX_VALUE;
 		int maxHeight = 0;
 		int inventory = B;
-		for (int i = hmin; i <= hmax; i++) {
+		for (int i = hmax; i >= hmin; i--) {
 			int w1 = 0;
 			int w2 = 0;
 			inventory = B;
@@ -43,10 +43,10 @@ public class Main {
 			if(inventory+w1-w2<0 || inventory+w1-w2>64000000) {
 				continue;
 			}
-			if (min >= w1 * 2 + w2) {
+			if (min > w1 * 2 + w2) {
 				min = w1 * 2 + w2;
-				maxHeight = i;
-			}
+				maxHeight = i;	
+			}	
 		}
 		System.out.println(min+" "+maxHeight);
 	}
