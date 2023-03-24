@@ -1,40 +1,37 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 public class Solution {
 	static int N, B, ans;
-	static int[] H;
-
-	public static void main(String[] args) throws IOException {
+	static int[] arr;
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		StringTokenizer st;
 		int T = Integer.parseInt(br.readLine());
-		for (int tc = 1; tc <= T; tc++) {
-			st = new StringTokenizer(br.readLine());
-			N = Integer.parseInt(st.nextToken());
-			B = Integer.parseInt(st.nextToken());
-			H = new int[N];
-			st = new StringTokenizer(br.readLine());
-			for (int i = 0; i < N; i++) {
-				H[i] = Integer.parseInt(st.nextToken());
-			}
+		
+		for (int t = 1; t <= T; t++) {
+			StringTokenizer NB = new StringTokenizer(br.readLine());
+			N = Integer.parseInt(NB.nextToken());
+			B = Integer.parseInt(NB.nextToken());
+			arr = new int[N];
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < N; i++)
+				arr[i] = Integer.parseInt(st.nextToken());
+		
 			ans = Integer.MAX_VALUE;
-			for (int i = 0; i < (1 << N); i++) {
-				int sum = 0;
-				for (int j = 0; j < N; j++) {
-					if ((i & (1 << j)) != 0) {
-						sum += H[j];
-					}
-				}
-				if (sum >= B && sum < ans) {
-					ans = sum;
-				}
-			}
-			sb.append("#" + tc + " ").append(ans - B).append("\n");
+			dfs(0, 0);
+			sb.append("#"+t+" "+ans+"\n");
 		}
 		System.out.println(sb);
+	}
+	
+	private static void dfs(int idx, int sum) {
+		if (sum >= B) {
+			ans = Math.min(ans, sum - B);
+			return;
+		}
+		if (idx == N) return;
+		dfs(idx+1, sum+arr[idx]);
+		dfs(idx+1, sum);
 	}
 }
