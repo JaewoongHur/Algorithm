@@ -66,21 +66,22 @@ public class Solution {
 
 		// bfs
 		while (!pq.isEmpty()) {
-			Node n = pq.poll(); // 우선순위 큐에서 우선순위가 높은 요소 반환하면서 삭제.
-
+			Node n = pq.poll(); 
+       // Node 클래스 compareTo 메서드 -> 가중치 낮은 값을 우선 순위로 둬서
+			// poll 했을 때, 가장 우선순위가 높은 가중치 낮은 값이 반환되면서 삭제.
 			for (int i = 0; i < 4; i++) {
 				int nr = n.r + dr[i];
 				int nc = n.c + dc[i];
-				if (!boundaryCheck(nr, nc) || visited[nr][nc]) {
+				if (!boundaryCheck(nr, nc) || visited[nr][nc]) { // 인덱스 범위를 넘어가거나 방문한 노드라면 패스
 					continue;
 				}
 				if(dist[nr][nc]> n.weight + arr[nr][nc] ) { // 현재까지의 가중치 합 + 다음 노드 가중치 합 
 					dist[nr][nc] = n.weight + arr[nr][nc];  // 최단 배열 저장 값보다 작을 경우 업데이트.
-					pq.offer(new Node(nr,nc,dist[nr][nc])); // 갱신된 최단 경로 인접 노드 큐에 추가.
+					pq.offer(new Node(nr,nc,dist[nr][nc])); // 갱신된 최단 경로 인접 노드를 우선순위 큐에 추가.
 					visited[nr][nc] = true;
 				}
 			}
 		}
-		return dist[N-1][N-1];
+		return dist[N-1][N-1]; // 종점값 반환
 	}
 }
