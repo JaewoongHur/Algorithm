@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -11,7 +10,6 @@ import java.util.StringTokenizer;
 public class Solution {
 	static List<List<Integer>> list = new ArrayList<>();
 	static boolean[] visit;
-	static List<Integer> lastNode = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -20,7 +18,6 @@ public class Solution {
 
 		for (int tc = 1; tc <= T; tc++) {
 			list = new ArrayList<>();
-			lastNode = new ArrayList<>();
 			st = new StringTokenizer(br.readLine());
 			int n = Integer.parseInt(st.nextToken());
 			int start = Integer.parseInt(st.nextToken());
@@ -42,17 +39,20 @@ public class Solution {
 			q.add(new int[] {start,0});
 			visit[start] = true;
 			int last = 0;
+			int lastNode = start;
 			while(!q.isEmpty()) {
 				int[] p = q.poll();
+			
 				if(p[1] > last) {
-					lastNode.clear();
 					last = p[1];
-					lastNode.add(p[0]);
+					lastNode = 0;
 				}
-				if(p[1] == last) {
-					lastNode.add(p[0]);
+				if(p[1]==last) {
+					if(p[0]>lastNode) {
+						lastNode = p[0];
+					}
 				}
-				
+
 				for(int end: list.get(p[0])) {
 					if(visit[end]) {
 						continue;
@@ -61,11 +61,8 @@ public class Solution {
 					visit[end] = true;
 				}
 			}
-			int max = 0;
-			for(int x : lastNode) {
-				max = Math.max(max, x);
-			}
-			sb.append("#"+tc+" ").append(max).append("\n");
+
+			sb.append("#"+tc+" ").append(lastNode).append("\n");
 		}
 		System.out.println(sb);
 	}
