@@ -42,19 +42,15 @@ class Solution {
                     }
                 }
                 else if(lion-apeach == max){
-                    boolean check = false;
                     for(int i=10;i>=0;i--){
                         if(arr[i] == ans[i]) continue;
                         if(arr[i] < ans[i]) break;
                         if(arr[i] > ans[i]){
-                            check = true;
+                          for(int j=0;j<11;j++){
+                             ans[j] = arr[j];
+                         }
                           break;
                         }
-                    }
-                    if(check){
-                     for(int j=0;j<11;j++){
-                        ans[j] = arr[j];
-                      }
                     }
                 }
             }            
