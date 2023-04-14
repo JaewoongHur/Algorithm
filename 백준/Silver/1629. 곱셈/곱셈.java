@@ -34,6 +34,6 @@ public class Main {
 				sum = sum.multiply(BigInteger.valueOf(arr[N-i])).remainder(BigInteger.valueOf(C));
 			}
 		}
-		System.out.println(sum);
+		System.out.println(sum.longValue());
 	}
 }
