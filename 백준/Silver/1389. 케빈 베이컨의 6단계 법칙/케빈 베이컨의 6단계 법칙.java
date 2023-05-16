@@ -48,7 +48,6 @@ public class Main {
 		for (int i = 1; i <= N; i++) {
 			int sum = 0;
 			for (int j = 1; j <= N; j++) {
-				if(dist[i][j] == INF) continue;
 				sum += dist[i][j];
 			}
 			if (min > sum) {
