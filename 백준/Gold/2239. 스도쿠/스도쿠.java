@@ -22,8 +22,8 @@ public class Main {
 			}
 		}
 		dfs(0);
-		for(int i=0;i<9;i++) {
-			for(int j=0;j<9;j++) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
 				sb.append(map[i][j]);
 			}
 			sb.append('\n');
@@ -39,15 +39,17 @@ public class Main {
 
 		int r = depth / 9;
 		int c = depth % 9;
-		
-		if(map[r][c] !=0) {
-			dfs(depth+1);
-		}else {
-			for(int i=1;i<=9;i++) {
-				if(!isPossible(r,c,i))continue;
+
+		if (map[r][c] != 0) {
+			dfs(depth + 1);
+		} else {
+			for (int i = 1; i <= 9; i++) {
+				if (!isPossible(r, c, i))
+					continue;
 				map[r][c] = i;
-				dfs(depth+1);
-				if(end) return;
+				dfs(depth + 1);
+				if (end)
+					return;
 				map[r][c] = 0;
 			}
 		}
@@ -55,14 +57,16 @@ public class Main {
 	}
 
 	private static boolean isPossible(int r, int c, int n) {
-		for(int i=0;i<9;i++) {
-			if(map[i][c] == n||map[r][i] == n) return false;
+		for (int i = 0; i < 9; i++) {
+			if (map[r][i] == n || map[i][c] == n)
+				return false;
 		}
-		int nr = r/3 *3;
-		int nc = c/3 *3;
-		for(int i=nr;i<nr+3;i++) {
-			for(int j=nc;j<nc+3;j++) {
-				if(map[i][j] == n) return false;
+		int nr = r / 3 * 3;
+		int nc = c / 3 * 3;
+		for (int i = nr; i < nr + 3; i++) {
+			for (int j = nc; j < nc + 3; j++) {
+				if (map[i][j] == n)
+					return false;
 			}
 		}
 		return true;
