@@ -38,8 +38,6 @@ class Solution {
         int idx = 0;
         for(int i=0;i<10000;i++){
             if(map.containsKey(i)){
-                
-                System.out.println(ac[i]);
                 if(ac[i]<=fees[0]){
                     answer[idx] = fees[1];
                 }
