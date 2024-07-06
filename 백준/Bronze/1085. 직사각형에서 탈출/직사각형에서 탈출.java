@@ -1,33 +1,19 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
-		double x = sc.nextInt();
-		double y = sc.nextInt();
-		double w = sc.nextInt();
-		double h = sc.nextInt();
-		sc.close();
-		double dx = 0;
-		double dy = 0;
-		if(x>=w/2) {
-			dx = w - x; 
-		}
-		else {
-			dx = x ;
-		}
-		if(y>=(h/2)) {
-			dy = h - y; 
-		}
-		else {
-			dy = y ;
-		}
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		if(x == 0 | y == 0 | x == w | y == h) {
-			dx = 0;
-		}
-
-		int min = (int)Math.min(dx, dy);
-		System.out.println(min);
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
+		
+		int w = Integer.parseInt(st.nextToken());
+		int h = Integer.parseInt(st.nextToken());
+		
+		System.out.println(Math.min(Math.min(x, y), Math.min(w-x, h-y)));		
 	}
 }
