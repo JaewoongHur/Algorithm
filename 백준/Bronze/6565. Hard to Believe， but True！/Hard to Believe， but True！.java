@@ -10,7 +10,7 @@ public class Main {
 		String s;
 		
 		while(true) {
-			s = br.readLine();
+			s = br.readLine().trim();
 			
 			if(s.equals("0+0=0")) {
 				System.out.println("True");
