@@ -22,7 +22,7 @@ public class Main {
 		while (true) {
 			s = br.readLine();
 
-			if (s == null) {
+			if (s == null || s.isEmpty()) {
 				break;
 			}
 
