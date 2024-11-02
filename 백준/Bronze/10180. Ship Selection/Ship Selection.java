@@ -20,9 +20,9 @@ public class Main {
 			for(int i=0;i<n;i++) {
 				st = new StringTokenizer(br.readLine());
 				
-				double v = Double.parseDouble(st.nextToken());
-				double f = Double.parseDouble(st.nextToken());
-				double c = Double.parseDouble(st.nextToken());
+				int v = Integer.parseInt(st.nextToken());
+				int f = Integer.parseInt(st.nextToken());
+				int c = Integer.parseInt(st.nextToken());
 				
 				if(v*f/c >= d) {
 					ans++;
