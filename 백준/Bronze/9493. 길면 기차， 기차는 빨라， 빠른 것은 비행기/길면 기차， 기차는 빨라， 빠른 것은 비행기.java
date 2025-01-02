@@ -10,6 +10,7 @@ public class Main {
 
 		String s;
 		
+		StringBuilder sb = new StringBuilder();
 		
 		while (true) {
 			s = br.readLine();
@@ -32,22 +33,22 @@ public class Main {
 
 			int second = d - hour * 3600 - minute * 60;
 			
-			System.out.print(hour + ":");
+			sb.append(hour + ":");
 			
 			if(minute<10) {
-				System.out.print("0"+minute +":");
+				sb.append("0"+minute +":");
 			}else {
-				System.out.print(minute+":");
+				sb.append(minute+":");
 			}
 			
 			if(second<10) {
-				System.out.print("0"+second);
+				sb.append("0"+second);
 			}else {
-				System.out.print(second);
+				sb.append(second);
 			}
 			
-			System.out.println();
+			sb.append("\n");
 		}
-
+		System.out.println(sb);
 	}
 }
