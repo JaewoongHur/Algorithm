@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -15,20 +14,25 @@ public class Main {
 				break;
 			}
 
-			BigInteger n = new BigInteger(s);
+			int n = Integer.parseInt(s);
 
-			BigInteger k = BigInteger.ONE;
+			int k = 1;
+
+			int cnt = 1;
 
 			while (true) {
-
-				if (k.remainder(n).compareTo(BigInteger.ZERO) == 0) {
+				if (k % n == 0) {
 					break;
 				}
-				
-				k = k.multiply(BigInteger.valueOf(10)).add(BigInteger.ONE);
+
+				k = 10 * k + 1;
+
+				k %= n;
+
+				cnt++;
 			}
-			
-			System.out.println(k.toString().length());
+
+			System.out.println(cnt);
 		}
 	}
 }
