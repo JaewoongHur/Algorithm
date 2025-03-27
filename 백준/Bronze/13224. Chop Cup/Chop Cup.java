@@ -12,17 +12,19 @@ public class Main {
 		int b = 0;
 		int c = 0;
 
+		int tmp = 0;
+		
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == 'A') {
-				int tmp = b;
+				tmp = b;
 				b = a;
 				a = tmp;
 			} else if (s.charAt(i) == 'B') {
-				int tmp = c;
+				tmp = c;
 				c = b;
 				b = tmp;
 			} else {
-				int tmp = a;
+				tmp = a;
 				a = c;
 				c = tmp;
 			}
