@@ -20,11 +20,11 @@ public class Main {
 			String[] arr = new String[n];
 			
 			for(int i=0;i<n;i++) {
-				String a = "";
+				StringBuilder a = new StringBuilder();
 				for(int j=0;j<n;j++) {
-					a += c[(i+j)%n];
+					a.append(c[(i+j)%n]);
 				}
-				arr[i] = a;
+				arr[i] = a.toString();
 			}
 			Arrays.sort(arr);
 			System.out.println(arr[0]);
