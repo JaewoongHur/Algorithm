@@ -10,6 +10,8 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine().trim());
 		
+		StringBuilder sb = new StringBuilder();
+		
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			
@@ -18,9 +20,9 @@ public class Main {
 			
 			int g = gcd(a,b);
 			
-			System.out.println((a/g) + " " + (b/g));
+			sb.append((a/g) + " " + (b/g)).append('\n');
 		}
-
+		System.out.println(sb);
 	}
 
 	private static int gcd(int a, int b) {
@@ -34,4 +36,5 @@ public class Main {
 
 		return a;
 	}
+
 }
