@@ -21,7 +21,7 @@ public class Main {
 		long L = 1;
 		
 		for(int i=0;i<n;i++) {
-			L = L/gcd(L,arr[i])*arr[i];
+			L = L*arr[i]/gcd(L,arr[i]);
 		}
 		
 		long ans = (s+L)%7;
