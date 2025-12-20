@@ -13,9 +13,10 @@ public class Main {
 		for(int i=0;i<8;i++) {
 			for(int j=0;j<8;j++) {
 				if((Math.abs(a-i) == 2 && Math.abs(b-j)==1) || (Math.abs(a-i)== 1 && Math.abs(b-j) == 2)) {
-					System.out.println(String.valueOf((char)(i+'a')) + String.valueOf(j + 1));
+					System.out.println("" + (char)(i+'a') + (j + 1));
 				}
 			}
 		}
+
 	}
 }
